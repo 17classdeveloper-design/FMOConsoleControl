@@ -10,22 +10,45 @@
     h1 { margin-top: 0; font-size: 32px; line-height: 1.2; }
     h2 { margin-top: 32px; font-size: 20px; }
     a { color: #047857; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    th, td { padding: 10px 12px; border: 1px solid #d8e2df; text-align: left; vertical-align: top; }
+    th { background: #edf4f2; }
   </style>
 </head>
 <body>
   <main>
     <h1>FMOConsole 隐私政策</h1>
-    <p>更新日期：2026 年 5 月 26 日</p>
+    <p>更新日期：2026 年 8 月 25 日</p>
     <p>FMOConsole 尊重用户隐私。本政策说明 FMOConsole 在 iOS 设备上的数据处理方式。</p>
 
-    <h2>我们不会收集的数据</h2>
-    <p>FMOConsole 不创建账号，不接入广告 SDK，不包含第三方统计 SDK，也不会由开发者收集、出售或共享用户个人信息。</p>
+    <h2>我们处理的数据</h2>
+    <p>为了提供消息中心、推送通知和 FMO Radio 控制功能，应用会处理下列数据：</p>
+    <table>
+      <thead>
+        <tr><th>数据</th><th>用途</th><th>处理位置</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>应用安装标识、安装鉴权凭据</td><td>识别同一应用安装、保护消息接口并同步消息状态</td><td>设备钥匙串及开发者消息服务</td></tr>
+        <tr><td>APNs device token、推送注册标识</td><td>向已授权通知的设备发送消息</td><td>开发者消息服务、Apple Push Notification service 和 Firebase Cloud Messaging</td></tr>
+        <tr><td>通知授权状态、消息已读状态和通知交互</td><td>展示授权引导、同步未读数量并改进消息功能</td><td>设备、开发者消息服务；部分通知交互可能由 Firebase Analytics 处理</td></tr>
+        <tr><td>应用语言、时区、应用版本/构建号、平台、Bundle ID 和推送环境</td><td>选择消息语言、安排发送时间、兼容不同版本并排查推送问题</td><td>开发者消息服务；Firebase Cloud Messaging 也会为推送功能处理其中部分设备和应用信息</td></tr>
+        <tr><td>第三方 SDK 技术诊断数据</td><td>维持推送和安装服务、排查传输问题并衡量服务可靠性</td><td>Firebase Messaging、Firebase Installations、Google Data Transport 等相关服务；此类诊断数据不与用户身份关联</td></tr>
+      </tbody>
+    </table>
+    <p>应用和上述服务在建立网络连接时还会处理 IP 地址等必要的网络连接信息。FMOConsole 不接入广告 SDK，不出售数据，也不会将这些数据用于跨 App 或跨网站跟踪。</p>
 
     <h2>本地保存的数据</h2>
-    <p>应用可能在设备本地保存用户输入的 FMO 设备地址、别名、收藏电台与最近连接记录。这些数据仅用于提升再次连接和浏览体验，不会上传给开发者。</p>
+    <p>应用可能在设备本地保存用户输入的 FMO 设备地址和别名、收藏电台、最近连接记录、通联日志、消息缓存、语言及显示偏好。这些数据用于再次连接、离线浏览和恢复用户设置。除上文明确说明的消息服务和第三方服务字段外，本地数据不会上传到开发者消息服务。</p>
 
-    <h2>网络连接</h2>
+    <h2>用户选择的 FMO 网络连接</h2>
     <p>用户主动连接 FMO Radio 设备或服务器时，应用会向用户填写或选择的地址建立 WebSocket/网络连接，用于获取电台列表、当前通联状态、实时音频和设备公告等信息。这些通信发生在用户选择的设备或服务之间。</p>
+
+    <h2>第三方服务</h2>
+    <p>应用使用 Apple Push Notification service 发送系统通知，并使用 Google Firebase Cloud Messaging 管理推送注册。应用也集成 Firebase Analytics，用于处理 Firebase Messaging 产生的通知交互并了解消息功能的使用情况。第三方会按照其条款和隐私政策处理数据：</p>
+    <ul>
+      <li><a href="https://www.apple.com/legal/privacy/">Apple 隐私政策</a></li>
+      <li><a href="https://firebase.google.com/support/privacy">Google Firebase 隐私与安全说明</a></li>
+    </ul>
 
     <h2>本地网络权限</h2>
     <p>应用请求本地网络权限，用于发现并连接局域网内的 FMO Radio 设备。</p>
@@ -36,8 +59,22 @@
     <h2>位置相关信息</h2>
     <p>应用不会请求设备定位权限。应用可能根据 FMO/APRS 数据中的网格或坐标显示距离、方位或地区信息；这些坐标并非来自用户设备定位。为显示地区名称，iOS 系统地理编码服务可能处理用于查询的坐标。</p>
 
+    <h2>数据保留、删除与用户选择</h2>
+    <p>设备本地数据通常保留到用户在应用中移除相关记录或卸载应用。消息服务数据仅在提供消息、推送、安全防护和故障排查所需期间保存；法律另有要求的除外。</p>
+    <ul>
+      <li>用户可以拒绝通知权限，或随时在 iOS“设置”中关闭 FMOConsole 通知。关闭后，应用会通知消息服务停用当前推送注册。</li>
+      <li>用户可以在应用内删除最近设备、别名、收藏等可管理数据；卸载应用会删除应用容器中的本地数据。</li>
+      <li>如需查询或删除开发者消息服务中的安装记录和消息状态，请通过下方联系方式提交请求。我们可能需要必要信息来确认目标安装，并会在适用法律要求的范围内处理。</li>
+    </ul>
+
+    <h2>数据安全</h2>
+    <p>开发者消息服务使用 HTTPS 传输，并使用安装鉴权凭据保护安装级接口。用户自行填写的 FMO Radio 地址可能使用局域网连接或未加密的 <code>ws://</code>；对公网服务建议使用 <code>wss://</code>。</p>
+
+    <h2>政策更新</h2>
+    <p>如果应用功能或数据处理方式发生变化，我们会更新本页面并修改上方日期。重大变化会通过适当方式提示用户。</p>
+
     <h2>联系我们</h2>
-    <p>如对本政策有疑问，请通过 <a href="https://github.com/17classdeveloper-design/FMOConsoleControl/issues">GitHub Issues</a> 联系。</p>
+    <p>如对本政策有疑问，或需要提出数据查询、删除请求，请通过 <a href="https://github.com/17classdeveloper-design/FMOConsoleControl/issues">GitHub Issues</a> 联系。</p>
   </main>
 </body>
 </html>
